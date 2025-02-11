@@ -15,6 +15,17 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        _animator.SetBool("Walk", _movement.IsMoving);
+        if (_movement._lookDirection.x < 0 && (_movement._lookDirection.y < 0 || _movement._lookDirection.y > 0) 
+            || _movement._lookDirection.x > 0 && (_movement._lookDirection.y < 0 || _movement._lookDirection.y > 0))
+        {
+            _animator.SetBool("isInDiagonal", true);
+        }
+        else
+        {
+            _animator.SetBool("isInDiagonal", false);
+        }
+
+        _animator.SetFloat("directionX", _movement._lookDirection.x);
+        _animator.SetFloat("directionY", _movement._lookDirection.y);
     }
 }
