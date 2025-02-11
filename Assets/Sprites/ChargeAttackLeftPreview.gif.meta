@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8560b64edbf440e48a66c2fc946b81c0
+guid: 95fd549abbe95f7489f577645b8023e1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8460268626561922479
-    second: Faceset 2_0
+      213: 3635045268300719946
+    second: ChargeAttackLeftPreview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Faceset 2_0
+      name: ChargeAttackLeftPreview_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 38
-        height: 38
+        x: 13
+        y: 23
+        width: 72
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 15a05613286179a80800000000000000
-      internalID: -8460268626561922479
+      spriteID: a4767878966427230800000000000000
+      internalID: 3635045268300719946
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Faceset 2_0: -8460268626561922479
+      ChargeAttackLeftPreview_0: 3635045268300719946
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
