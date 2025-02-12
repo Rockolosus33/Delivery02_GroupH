@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public AudioSource audioSource;
+    private AudioSource audioSource;
 
     private System.Collections.IEnumerator WaitForSoundAndChangeScene()
     {
@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        audioSource = GetComponent<AudioSource>();
     }
+
     private void OnEnable()
     {
         PlayerWin.OnPlayerWin += EndScene;
@@ -22,15 +24,8 @@ public class GameManager : MonoBehaviour
 
     public void Play()
     {
-        if (audioSource != null && audioSource.clip != null)
-        {
-            audioSource.Play();
-            StartCoroutine(WaitForSoundAndChangeScene());
-        }
-        else
-        {
-            SceneManager.LoadScene("Gameplay");
-        }
+        audioSource.Play();
+        StartCoroutine(WaitForSoundAndChangeScene());
     }
 
     private void EndScene()
