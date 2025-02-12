@@ -2,27 +2,33 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
-    public Transform[] waypoints; // Array de waypoints
-    public float speed = 5f; // Velocidad de movimiento
+    public Transform[] waypoints;
+    public float speed = 5f;
     private int currentWaypoint = 0;
+    private Animator animator;
 
     private void Start()
     {
+        currentWaypoint = 0;
         transform.position = waypoints[currentWaypoint].position;
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
-        if (waypoints.Length == 0) return;
-
-        // Mover el objeto hacia el waypoint actual
         transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
 
-        // Verificar si llegó al waypoint
         if (Vector2.Distance(transform.position, waypoints[currentWaypoint].position) < 0.1f)
         {
-            // Pasar al siguiente waypoint
-            currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
+            if (currentWaypoint + 1 >= waypoints.Length)
+            {
+                currentWaypoint = 0;
+            }
+            else
+            {
+                currentWaypoint = currentWaypoint + 1;
+            }
+
+            animator.SetTrigger("flipAnimation");
         }
     }
 }
