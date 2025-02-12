@@ -12288,6 +12288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1880945791}
   - component: {fileID: 1880945792}
+  - component: {fileID: 1880945793}
   m_Layer: 0
   m_Name: Enemy01
   m_TagString: Untagged
@@ -12332,6 +12333,26 @@ MonoBehaviour:
   - {fileID: 773019032}
   speed: 5
   enemyDirection: 0
+--- !u!114 &1880945793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880945790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bff7624a0bdc9e45b56e498ee1777e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WhatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  WhatIsVisible:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  DetectionRange: 1.7
+  VisionAngle: 60
 --- !u!1 &1936409785
 GameObject:
   m_ObjectHideFlags: 0
