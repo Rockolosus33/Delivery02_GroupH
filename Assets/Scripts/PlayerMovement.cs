@@ -30,10 +30,8 @@ public class PlayerMovement : MonoBehaviour
         _lookDirection = inputVal;
     }
 
-    // NOTE: InputSystem: "SaveScore" action becomes "OnSaveScore" method
     public void OnSaveScore()
     {
-        // Usage example on how to save score
         PlayerPrefs.SetInt("Score", score);
         score = PlayerPrefs.GetInt("Score");
     }

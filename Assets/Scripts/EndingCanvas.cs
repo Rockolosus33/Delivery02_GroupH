@@ -9,7 +9,6 @@ public class EndingCanvas : MonoBehaviour
 
     void Start()
     {
-
         if (TimeManager.instance.GetTime() > 60f)
         {
             finalTimeText.text = "Total time: " + 60 + " seconds";

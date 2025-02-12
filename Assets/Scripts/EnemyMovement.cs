@@ -27,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
             animator.SetTrigger("EnemyFrontAnimation");
         }
     }
+
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);

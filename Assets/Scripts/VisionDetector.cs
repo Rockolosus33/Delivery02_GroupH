@@ -102,12 +102,7 @@ public class VisionDetector : MonoBehaviour
     private bool IsVisible(Transform target)
     {
         Vector3 dir = target.position - transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(
-           transform.position,
-           dir,
-           DetectionRange,
-           WhatIsVisible
-        );
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, DetectionRange, WhatIsVisible);
 
         return (hit.collider.transform == target);
     }
