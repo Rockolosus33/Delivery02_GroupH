@@ -5,12 +5,19 @@ using UnityEngine;
 public class VisionDetector : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;
+    [SerializeField] private GameObject playerObject;
     public LayerMask WhatIsPlayer;
     public LayerMask WhatIsVisible;
+    private AudioSource audioSource;
     public float DetectionRange;
     public float VisionAngle;
 
     public static Action OnChangeFinalScene;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnDrawGizmos()
     {
@@ -36,15 +43,21 @@ public class VisionDetector : MonoBehaviour
             {
                 if (PlayerIsVisible(playerTransform))
                 {
-                    //AUDIO
-
-
-
-
-                    OnChangeFinalScene?.Invoke();
+                    if (!audioSource.isPlaying)
+                    {
+                        playerObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+                        StartCoroutine(PlayAudioAndNotify());
+                    }
                 }
             }
         }
+    }
+
+    private System.Collections.IEnumerator PlayAudioAndNotify()
+    {
+        audioSource.Play();
+        yield return new WaitForSeconds(audioSource.clip.length);
+        OnChangeFinalScene?.Invoke();
     }
 
     private bool PlayerInRange()
