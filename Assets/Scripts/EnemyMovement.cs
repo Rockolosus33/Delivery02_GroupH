@@ -2,16 +2,30 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+    [SerializeField] private int intialWayPoint;
+
     public Transform[] waypoints;
     public float speed = 5f;
     private int currentWaypoint = 0;
-    private Animator animator;
+
+    [SerializeField] private EnemyDirection enemyDirection;
+
+    enum EnemyDirection
+    {
+        Vertical,
+        Horizontal
+    }
 
     private void Start()
     {
-        currentWaypoint = 0;
+        currentWaypoint = intialWayPoint;
         transform.position = waypoints[currentWaypoint].position;
-        animator = GetComponent<Animator>();
+
+        if (enemyDirection == EnemyDirection.Horizontal)
+        {
+            animator.SetTrigger("EnemyFrontAnimation");
+        }
     }
     void Update()
     {
@@ -21,14 +35,22 @@ public class EnemyMovement : MonoBehaviour
         {
             if (currentWaypoint + 1 >= waypoints.Length)
             {
+                if (enemyDirection == EnemyDirection.Vertical)
+                {
+                    animator.SetTrigger("EnemyBackAnimation");
+                }
+
                 currentWaypoint = 0;
             }
             else
             {
+                if (enemyDirection == EnemyDirection.Vertical)
+                {
+                    animator.SetTrigger("EnemyFrontAnimation");
+                }
+
                 currentWaypoint = currentWaypoint + 1;
             }
-
-            animator.SetTrigger("flipAnimation");
         }
     }
 }
