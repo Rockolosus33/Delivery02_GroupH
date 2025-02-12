@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 6697099999116346072}
   intialWayPoint: 0
+  StayTime: 3
   waypoints:
   - {fileID: 6686510805248634933}
   - {fileID: 302412384717114525}

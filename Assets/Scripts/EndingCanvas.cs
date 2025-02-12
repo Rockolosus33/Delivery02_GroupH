@@ -11,7 +11,7 @@ public class EndingCanvas : MonoBehaviour
     {
         ActiveFinalPanel(GameManager.playerHasWon);
 
-        finalTimeText.text = "Total time: " + TimeManager.instance.GetTime().ToString("F2") + " seconds";
+        finalTimeText.text = "High Score: " + TimeManager.instance.GetTime().ToString("F2") + " seconds";
     }
 
     private void ActiveFinalPanel(bool hasWon)
