@@ -20,10 +20,10 @@ public class TextDistance : MonoBehaviour
         DistanceManagement.OnDistanceChanged += UpdateDistanceText;
     }
 
-    //private void OnDisable()
-    //{
-    //DistanceManagement.OnDistanceChanged += UpdateDistanceText;
-    //}
+    private void OnDisable()
+    {
+        DistanceManagement.OnDistanceChanged -= UpdateDistanceText;
+    }
 
     private void UpdateDistanceText(float distance)
     {

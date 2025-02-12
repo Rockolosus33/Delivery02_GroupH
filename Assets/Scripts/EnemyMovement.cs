@@ -42,6 +42,7 @@ public class EnemyMovement : MonoBehaviour
                 }
 
                 currentWaypoint = 0;
+                this.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
             else
             {
@@ -51,6 +52,7 @@ public class EnemyMovement : MonoBehaviour
                 }
 
                 currentWaypoint = currentWaypoint + 1;
+                this.transform.rotation = Quaternion.Euler(0, 0, 180);
             }
         }
     }

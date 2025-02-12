@@ -7,18 +7,24 @@ public class EndingCanvas : MonoBehaviour
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
 
-    void Start()
+    private void OnEnable()
     {
-        if (TimeManager.instance.GetTime() > 60f)
+        ActiveFinalPanel(GameManager.playerHasWon);
+
+        finalTimeText.text = "Total time: " + TimeManager.instance.GetTime().ToString("F2") + " seconds";
+    }
+
+    private void ActiveFinalPanel(bool hasWon)
+    {
+        if (hasWon)
         {
-            finalTimeText.text = "Total time: " + 60 + " seconds";
+            winPanel.SetActive(true);
+            losePanel.SetActive(false);
         }
         else
         {
-            finalTimeText.text = "Total time: " + TimeManager.instance.GetTime().ToString("F2") + " seconds";
+            winPanel.SetActive(false);
+            losePanel.SetActive(true);
         }
-
-        winPanel.SetActive(false);
-        losePanel.SetActive(true);
     }
 }

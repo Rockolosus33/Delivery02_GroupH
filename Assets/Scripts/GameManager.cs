@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private AudioSource audioSource;
+
+    public static bool playerHasWon = false;
 
     private System.Collections.IEnumerator WaitForSoundAndChangeScene()
     {
@@ -13,23 +16,43 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
     {
-        PlayerWin.OnPlayerWin += EndScene;
+        PlayerWin.OnPlayerWin += WinEndScene;
+        VisionDetector.OnChangeFinalScene += LoseEndScene;
+    }
+
+    private void OnDisable()
+    {
+        PlayerWin.OnPlayerWin -= WinEndScene;
+        VisionDetector.OnChangeFinalScene -= LoseEndScene;
     }
 
     public void Play()
     {
-        audioSource.Play();
-        StartCoroutine(WaitForSoundAndChangeScene());
+        if (audioSource != null)
+        {
+            audioSource.Play();
+            StartCoroutine(WaitForSoundAndChangeScene());
+        }
+        else
+        {
+            SceneManager.LoadScene("Gameplay");
+        }
     }
 
-    private void EndScene()
+    private void WinEndScene()
     {
+        playerHasWon = true;
+        SceneManager.LoadScene("Ending");
+    }
+
+    private void LoseEndScene()
+    {
+        playerHasWon = false;
         SceneManager.LoadScene("Ending");
     }
 
