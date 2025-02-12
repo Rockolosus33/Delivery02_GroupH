@@ -8,13 +8,13 @@ public class PlayerMovement : MonoBehaviour
 {
     public Vector2 _lookDirection;
 
-    [SerializeField]
-    private float Speed = 5.0f;
+    [SerializeField] private float Speed = 5.0f;
 
-    private bool _isMoving;
     Rigidbody2D _rigidbody;
 
     private int score = 2000;
+
+    public static Action<float> OnDistanceUploated;
 
     void Start()
     {
@@ -23,17 +23,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        // Read value from control, the type depends on what
-        // type of controls the action is bound to
         var inputVal = value.Get<Vector2>();
 
         Vector2 velocity = inputVal * Speed;
         _rigidbody.linearVelocity = velocity;
-
         _lookDirection = inputVal;
-
-        //if (_isMoving) LookAt((Vector2)transform.position + velocity);
-        //else transform.rotation = Quaternion.identity;
     }
 
     // NOTE: InputSystem: "SaveScore" action becomes "OnSaveScore" method
@@ -43,12 +37,4 @@ public class PlayerMovement : MonoBehaviour
         PlayerPrefs.SetInt("Score", score);
         score = PlayerPrefs.GetInt("Score");
     }
-
-    //private void LookAt(Vector2 targetPosition)
-    //{
-    //    float angle = 0.0f;
-    //    Vector3 relative = transform.InverseTransformPoint(targetPosition);
-    //    angle = Mathf.Atan2(relative.x, relative.y) * Mathf.Rad2Deg;
-    //    transform.Rotate(0, 0, -angle);
-    //}
 }
