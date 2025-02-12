@@ -12,7 +12,7 @@ public class TextDistance : MonoBehaviour
 
     private void Start()
     {
-        label.text = "0";
+        label.text = "Distance: 0 m";
     }
 
     private void OnEnable()
@@ -27,6 +27,6 @@ public class TextDistance : MonoBehaviour
 
     private void UpdateDistanceText(float distance)
     {
-        label.text = distance.ToString("F2");
+        label.text = "Distance: " + distance.ToString("F2") + "m";
     }
 }

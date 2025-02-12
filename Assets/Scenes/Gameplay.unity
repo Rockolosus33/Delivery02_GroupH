@@ -11981,7 +11981,7 @@ PrefabInstance:
     - target: {fileID: 3015525112563319478, guid: f0fb03058cda6e442bb1039f141840eb,
         type: 3}
       propertyPath: DetectionRange
-      value: 1.55
+      value: 1.11
       objectReference: {fileID: 0}
     - target: {fileID: 3015525112563319478, guid: f0fb03058cda6e442bb1039f141840eb,
         type: 3}

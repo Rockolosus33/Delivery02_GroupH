@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem.XR.Haptics;
+﻿using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
